@@ -1,9 +1,10 @@
 package main
 
-import "fmt"
+import "github.com/Larouimohammed/go_proxies/forwarding_proxy"
 
 func main() {
 
-	fmt.Println("there is many types of proxie....")
+	forwarding_proxy.Forward()
+	
+	
 }
-
