@@ -29,4 +29,16 @@ func Forward() {
 func handleConn(conn net.Conn) {
 
 	defer conn.Close()
-}
+	buffer := make([]byte, 1024)
+
+	for {
+	 n, err := conn.Read(buffer)
+	 if err != nil {
+	  fmt.Println("Error:", err)
+	  return
+	 }
+   
+	 fmt.Printf("Data Received: %s\n", buffer[:n])
+	}
+   }
+
