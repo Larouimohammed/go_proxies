@@ -31,3 +31,7 @@ func main() {
 //implment forwardind using net.io packages 
 //implement https between curl client and gin server
 // goroutine and thread optimization 
+// env load into config struct 
+// redis data base
+// interfaces implementation
+// write server with http package
