@@ -9,18 +9,17 @@ import (
 )
 
 const (
-	Forward_Proxy_Port = "localhost:8080"
-	Forward_Proxy_URL  = "localhost:8081"
-	Direct_Proxy_Port  = "localhost:8081"
-	Server_Address     = "localhost:8082"
+	Forward_Proxy_Addr = "localhost:8080"
+	Direct_Proxy_Addr  = "localhost:8081"
+	Server_Addr     = "localhost:8082"
 )
 
 func main() {
-	forward_proxy := forwarding_proxy.NewForwardProxy(Forward_Proxy_Port, Forward_Proxy_URL)
-	direct_proxy := direct_proxy.NewDirectProxy(Direct_Proxy_Port, Server_Address)
-	server := server.NewServer(Server_Address)
-	go forward_proxy.Listent_And_Accept(Forward_Proxy_Port)
-	go direct_proxy.Listent_And_Accept(Direct_Proxy_Port)
+	forward_proxy := forwarding_proxy.NewForwardProxy(Forward_Proxy_Addr, Direct_Proxy_Addr)
+	direct_proxy := direct_proxy.NewDirectProxy(Direct_Proxy_Addr, Server_Addr)
+	server := server.NewServer(Server_Addr)
+	go forward_proxy.Listent_And_Accept(Forward_Proxy_Addr)
+	go direct_proxy.Listent_And_Accept(Direct_Proxy_Addr)
 	if err := server.Serve(); err != nil {
 		log.Fatal(err)
 	}
